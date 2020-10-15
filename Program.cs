@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Threading;
 
 namespace Lab5
@@ -9,7 +10,7 @@ namespace Lab5
         {
             Console.WriteLine("---Факториал!---");
             Console.WriteLine("Введите число:");
-            ulong num = GetNumber();
+            int num = GetNumber();
             string factorial = CalculateFactorial(num).ToString();
             int length = factorial.ToString().Length;
             length += 2;
@@ -38,18 +39,18 @@ namespace Lab5
             }
         }
         //метод ввода
-        static ulong GetNumber()
+        static int GetNumber()
         {
-            ulong num;
+            int num;
             string str;
             do
             {
-                str=Console.ReadLine();
-            } while (!UInt64.TryParse(str, out num) && num>=0);
+                str = Console.ReadLine();
+            } while (!Int32.TryParse(str, out num) && num >= 0);
             return num;
         }
         //метод вычисления факториала
-        static ulong CalculateFactorial(ulong num)
+        static BigInteger CalculateFactorial(BigInteger num)
         {
             if (num > 1) return num * CalculateFactorial(num - 1);
             else return 1;
